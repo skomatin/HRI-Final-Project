@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 845389683}
   - component: {fileID: 845389682}
   - component: {fileID: 845389684}
+  - component: {fileID: 845389685}
   m_Layer: 0
   m_Name: RosConnector
   m_TagString: Untagged
@@ -379,7 +380,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845389680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef6e2677fa36b0c46a9f6d8bd354c686, type: 3}
   m_Name: 
@@ -388,6 +389,20 @@ MonoBehaviour:
   TimeStep: 0
   meshRenderer: {fileID: 780069448}
   imageData: 
+--- !u!114 &845389685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845389680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606c7a0f1a4d07d4a8d2259a5a5bcfe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Topic: /stretch_diff_drive_controller/cmd_vel
+  PublishedTransform: {fileID: 780069450}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

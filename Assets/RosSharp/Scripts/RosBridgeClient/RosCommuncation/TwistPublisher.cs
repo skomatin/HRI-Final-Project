@@ -23,7 +23,7 @@ namespace RosSharp.RosBridgeClient
 
         private MessageTypes.Geometry.Twist message;
         private float previousRealTime;        
-        private Vector3 previousPosition = Vector3.zero;
+        private Vector3 previousPosition = new Vector3(0, 0, 0.01f);
         private Quaternion previousRotation = Quaternion.identity;
 
         protected override void Start()
@@ -55,6 +55,7 @@ namespace RosSharp.RosBridgeClient
             previousPosition = PublishedTransform.localPosition;
             previousRotation = PublishedTransform.localRotation;
 
+            Debug.Log(message.linear.z);
             Publish(message);
         }
 
