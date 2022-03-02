@@ -46,7 +46,7 @@ namespace RosSharp.RosBridgeClient
             float turn = Input.GetAxis("Horizontal");
 
             Vector3 linearVelocity = new Vector3(0, 0, forward);
-            Vector3 angularVelocity = new Vector3(0, turn, 0);
+            Vector3 angularVelocity = new Vector3(0, -turn, 0);
             message.linear = GetGeometryVector3(linearVelocity.Unity2Ros());
             message.angular = GetGeometryVector3(angularVelocity.Unity2Ros());
 
