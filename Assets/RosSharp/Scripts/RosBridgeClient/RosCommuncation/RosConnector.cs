@@ -24,6 +24,7 @@ namespace RosSharp.RosBridgeClient
 {
     public class RosConnector : MonoBehaviour
     {
+        public Chatter chatter;
         public int SecondsTimeout = 10;
 
         public RosSocket RosSocket { get; private set; }
@@ -61,13 +62,15 @@ namespace RosSharp.RosBridgeClient
             RosSocket.Close();
         }
 
-        private void OnConnected(object sender, EventArgs e)
+        public void OnConnected(object sender, EventArgs e)
         {
             IsConnected.Set();
             Debug.Log("Connected to RosBridge: " + RosBridgeServerUrl);
+            chatter.sendMessage(chatter.RESET);
+            // Debug.Log("sendkajsdnaksjakjfans");
         }
 
-        private void OnClosed(object sender, EventArgs e)
+        public void OnClosed(object sender, EventArgs e)
         {
             IsConnected.Reset();
             Debug.Log("Disconnected from RosBridge: " + RosBridgeServerUrl);
