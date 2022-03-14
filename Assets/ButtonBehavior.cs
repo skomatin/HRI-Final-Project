@@ -24,7 +24,6 @@ public class ButtonBehavior : MonoBehaviour {
     private bool buttonPressedLeft;
     private bool buttonPressedForward;
     private bool buttonPressedBackward;
-    private int n;
 
     public void OnButtonPressRight(){
         buttonPressedRight = true;
@@ -75,9 +74,6 @@ public class ButtonBehavior : MonoBehaviour {
 
     public void OnButtonRecordPress()
     {
-        // rosConnector.resetList();
-        Debug.Log("Record Pressed!\n");
-
         btnStartRecording.interactable = false;
         btnObjectFound.interactable = true;
         btnReturnToCity.interactable = false;
@@ -88,15 +84,11 @@ public class ButtonBehavior : MonoBehaviour {
 
         prompt.text = PROMPT_ONCE_OBJECT_FOUND;
 
-        Debug.Log("isRecording in BB: " + isRecording);
-
         rosConnector2.sendMessage(rosConnector2.NAVIGATING);
     }
 
     public void OnButtonObjectFoundPress()
     {
-        Debug.Log("Recording Stopped!\n");
-
         btnStartRecording.interactable = false;
         btnObjectFound.interactable = false;
         btnEmergencyStop.interactable = false;
@@ -119,12 +111,7 @@ public class ButtonBehavior : MonoBehaviour {
         btnReturnToCity.interactable = false;
         btnEmergencyStop.interactable = true;
 
-        if (isRecording) {
-            //Something is off
-            Debug.Log("Something is off");
-        }
-        else {
-            Debug.Log("Record Playing!\n");
+        if (!isRecording) {
             rosConnector.playRecording = true;
         }
     }
@@ -148,11 +135,5 @@ public class ButtonBehavior : MonoBehaviour {
 
         rosConnector2.sendMessage(rosConnector2.TASK_COMPLETE);
         rosConnectorListen.done = false;
-    }
-
-    public void setReturnToCityInteractable(bool interactable)
-    {
-        btnEmergencyStop.interactable = false;
-        btnReturnToCity.interactable = interactable;
     }
 }
