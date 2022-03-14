@@ -1,3 +1,15 @@
+/*
+* Filename: Chatter.cs
+* Student: Arthi Haripriyan, Pratyusha Ghosh, Alex Chow, Saikiran Komatieni
+* Final Project: Bot-The-Builder
+*
+* Description: TODO
+*
+* How to use:
+* Usage:
+* This file must be run as part of the unity package
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
