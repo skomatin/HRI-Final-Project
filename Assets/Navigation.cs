@@ -101,23 +101,17 @@ namespace RosSharp.RosBridgeClient
             message.linear = GetGeometryVector3(linearVelocity.Unity2Ros());
             message.angular = GetGeometryVector3(angularVelocity.Unity2Ros());
             
-            // Debug.Log("isRecording: " + isRecording); 
             if (isRecording) {
                 messageList.Add(new MessageTypes.Geometry.Twist(message.linear, message.angular));
-                // Debug.Log("message: x: " + message.angular.x + ", y: " + message.angular.y + ", z: " + message.angular.z);
             } else if (playRecording) {
-                Debug.Log("playing recording");
                 if(messageList.Count > 0) {
                     // about face
-                    Debug.Log("aboutFaceIter: " + aboutFaceIterator);
                     if (aboutFaceIterator < ABOUT_FACE_SEQ_LEN)
                     {
                         message = InitAboutFaceVector(1);
-                        Debug.Log("message: x: " + message.angular.x + ", y: " + message.angular.y + ", z: " + message.angular.z);
                         aboutFaceIterator++;
                     } else {
                         // playback record
-                        Debug.Log("playing back; messageList.Count: " + messageList.Count);
                         int last = messageList.Count - 1;
                         message = messageList[last];
                         negateTwist(message);
@@ -133,7 +127,6 @@ namespace RosSharp.RosBridgeClient
                     {
                         playRecording = false;
                         buttonManager.onFinishingReturn();
-                        Debug.Log("Done playing. aboutFaceIter: " + aboutFaceIterator);
                     }
                 }
 
@@ -145,7 +138,6 @@ namespace RosSharp.RosBridgeClient
                 }
             }
 
-            // Debug.Log(message);
             Publish(message);
         }
 
@@ -161,7 +153,6 @@ namespace RosSharp.RosBridgeClient
         }
 
         private void negateTwist(MessageTypes.Geometry.Twist twist) {
-            // negateVector(twist.linear);
             negateVector(twist.angular);
         }
 
