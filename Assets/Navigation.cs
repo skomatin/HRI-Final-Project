@@ -37,19 +37,18 @@ namespace RosSharp.RosBridgeClient
         private int aboutFaceIterator;
 
         private int ABOUT_FACE_SEQ_LEN = 230;
-
-        public bool resetList() {
-            isRecording = false;
-            messageList.Clear();
-            return true;
-        }
-
         private MessageTypes.Geometry.Twist message;
 
         protected override void Start()
         {
             base.Start();
             InitializeMessage();
+        }
+
+        public bool resetList() {
+            isRecording = false;
+            messageList.Clear();
+            return true;
         }
 
         private MessageTypes.Geometry.Twist InitAboutFaceVector(int direction)
